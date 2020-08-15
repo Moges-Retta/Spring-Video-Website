@@ -1,0 +1,100 @@
+h1{
+  margin: 10px 25px;
+}
+a {
+  margin: 0 25px;
+}
+h2{
+  margin: 10px 25px;
+}
+body {
+background-color: #C0BD92;
+font-family: sans-serif;
+}
+nav,ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+span{
+   display: block;
+   float:left;
+   clear:both;
+   margin-left:0px;
+   margin-bottom:10px;
+}
+
+nav a{
+   float: left;
+   display: block;
+   text-align: center;
+   padding: 5px 0px;
+   margin-right:5px;
+   margin-bottom:15px;
+   text-decoration: none;
+   font-size: 14px;
+  }
+
+nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+ nav  a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+li img{
+float:left;
+margin-top:50px;
+padding:5px;
+}
+    dd,dt { margin-left: 0; } dt { margin-top: 0.5em; } dd { font-weight: bold; }
+
+    .naastMekaar { padding-left: 0; padding-top: 10px;}
+    .naastMekaar li { display: inline; }
+
+    label span, .fout {
+     background-color: red;
+     border-bottom-right-radius: 0.5em;
+     border-top-left-radius: 0.5em;
+     border-top-right-radius: 0.5em;
+     box-shadow: 5px 5px #777777;
+     margin-left: 0.5em;
+     padding: 0.5em;
+     color: white; }
+     label span { margin-left: 0.5em; }
+     label {
+     cursor: pointer;
+       margin: 10px 25px;
+     }
+     input {
+     display: block;
+        margin: 10px 25px;
+
+     font-size: 1.1em; }
+
+input[type=checkbox]
+{ display: inline; }
+
+table, th, td {
+    border-collapse: collapse;
+  border: 1px solid black;
+}
+th {
+  background-color: grey;
+  color: white;
+  text-align:left;
+}
+td {
+  background-color: #D3D3D3;
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+button{
+  margin: 10px 25px;
+}

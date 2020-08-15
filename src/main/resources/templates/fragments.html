@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<div xmlns:th="http://www.thymeleaf.org">
+        <ul th:fragment="topMenu">
+            <a th:href="@{/}">Genres</a>
+            <a th:href="@{/Mandje}">Mandje</a>
+            <a th:href="@{/Klant}">Klant</a>
+        </ul>
+    <nav th:fragment="menu">
+        <ul>
+            <li><a th:href="@{/Aktiefilm}">Aktiefilm</a></li>
+            <li><a th:href="@{/Avontuur}">Avontuur</a></li>
+            <li><a th:href="@{/Cowboyfilm}">Cowboyfilm</a></li>
+            <li><a th:href="@{/Erotiek}">Erotiek</a></li>
+            <li><a th:href="@{/Griezel}">Griezel</a></li>
+            <li><a th:href="@{/Humor}">Humor</a></li>
+            <li><a th:href="@{/Kinderfilm}">Kinderfilm</a></li>
+            <li><a th:href="@{/Oorlog}">Oorlog</a></li>
+            <li><a th:href="@{/Piratenfilm}">Piratenfilm</a></li>
+            <li><a th:href="@{/Sciencefiction}">Science fiction</a></li>
+            <li><a th:href="@{/Sentimenteel}">Sentimenteel</a></li>
+            <li><a th:href="@{/Speelfilm}">Speelfilm</a></li>
+            <li><a th:href="@{/Thriller}">Thriller</a></li>
+        </ul>
+    </nav>
+    <head th:fragment="head(title)">
+        <link rel="icon" th:href="@{/images/retrovideo.ico}" type="image/x-icon">
+        <title th:text="${title}"></title>
+        <link rel="stylesheet" th:href="@{/css/retro.css}">
+    </head>
+</div>
+</body>
+</html>

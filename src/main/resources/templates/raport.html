@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="nl " xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Raport')"></head>
+<body>
+<a th:replace="fragments::topMenu"></a>
+<h1>Raport</h1>
+<div th:if="${nietGereserveerd.empty}">
+    <span>De reservatie is OK</span>
+</div>
+<div th:if="not ${nietGereserveerd.empty}">
+    <span>De reservatie lukt niet : </span>
+    <ul >
+        <li th:each="film:${nietGereserveerd}" th:object="${film}" >
+            <span th:text="*{title}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

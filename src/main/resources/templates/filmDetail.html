@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl " xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Retro Video')"></head>
+<body>
+<a th:replace="fragments::topMenu"></a>
+<form th:if="${film}" th:object="${film}"
+      method="post" th:action="@{/Mandje/{filmId}(filmId=*{id})}">
+    <div >
+        <h1 th:text="*{title}"></h1>
+        <img th:src="@{/images/{filmId}.jpg(filmId=*{id})}"
+             th:alt="*{title}">
+        <dl>
+            <dt>Prijs</dt> €
+            <dd th:text="*{prijs}"></dd>
+            <dt>Voorraad</dt>
+            <dd th:text="*{voorraad}"></dd>
+            <dt>Voorraad</dt>
+            <dd th:text="*{gereserveerd}"></dd>
+            <dt>Beschikbaar</dt>
+            <dd id="beschikbaar" th:text="*{voorraad}-*{gereserveerd}"></dd>
+        </dl>
+    </div>
+    <button>In Mandje</button>
+</form>
+
+</body>
+<script th:src="@{/js/beschikbaar.js}" defer></script>
+</html>

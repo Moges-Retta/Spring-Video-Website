@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="nl " xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Retro Video')"></head>
+<body>
+<a th:replace="fragments::topMenu"></a>
+<h2>Genres</h2>
+<nav th:replace="fragments::menu"></nav>
+<span ><h2 th:text ="${Genre}"></h2></span>
+    <ul class="naastMekaar">
+        <li  th:each="film:${films}" th:object="${film}">
+            <a th:href="@{/{filmId}(filmId=*{id})}">
+            <img th:src="@{/images/{filmId}.jpg(filmId=*{id})}"
+                 th:alt="*{title}">
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Klanten')">
+</head>
+<body>
+<a th:replace="fragments::topMenu"></a>
+<h1>Bevestigen</h1>
+<form method="post" th:action="@{/bevestigen/raport}">
+    <span th:text="|${aantalfilms} film(s) voor ${klient.familienaam} ${klient.voornaam}"></span>
+    <label>
+        <button>Bevestigen</button>
+    </label>
+</form>
+</body>
+</html>
