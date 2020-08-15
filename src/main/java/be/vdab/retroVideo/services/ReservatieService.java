@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ReservatieService {
     Optional<Reservatie> findById(long id);
-    List<Reservatie> create(Reservatie reservatie);
+    long create(Reservatie reservatie);
 }

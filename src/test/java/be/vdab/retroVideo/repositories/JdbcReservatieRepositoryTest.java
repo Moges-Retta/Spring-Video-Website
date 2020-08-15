@@ -58,9 +58,7 @@ public class JdbcReservatieRepositoryTest extends AbstractTransactionalJUnit4Spr
     void create() {
         var id = repository.create(
                 new Reservatie(idVanTestKlant(),idVanTestFilm(),
-                        LocalDateTime.now()))
-                .get(0)
-                .getKlantid();
+                        LocalDateTime.now()));
         assertThat(id).isPositive();
     }
 }

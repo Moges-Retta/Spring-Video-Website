@@ -22,7 +22,7 @@ public class DefaultReservatieService implements ReservatieService{
     }
 
     @Override
-    public List<Reservatie> create(Reservatie reservatie) {
+    public long create(Reservatie reservatie) {
         return repository.create(reservatie);
     }
 }

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 @Repository
 public class JdbcReservatieRepository implements ReservatieRepository{
@@ -24,8 +25,8 @@ public class JdbcReservatieRepository implements ReservatieRepository{
             (result, rowNum) ->
                     new Reservatie(result.getLong("klantid"),
                             result.getLong("filmid"),
-                            LocalDateTime.parse(
-                            result.getDate("reservatie").toLocalDate().format(format)));
+                            result.getObject(3, LocalDateTime.class)
+                            );
 
     public JdbcReservatieRepository(JdbcTemplate template) {
         this.template = template;
@@ -45,14 +46,16 @@ public class JdbcReservatieRepository implements ReservatieRepository{
     }
 
     @Override
-    public List<Reservatie> create(Reservatie reservatie) {
+    public long create(Reservatie reservatie) {
         var kolomWaarden
                 = Map.of("klantid", reservatie.getKlantid(),
                 "filmid", reservatie.getFilmid(),
                 "reservatie",reservatie.getReservatie());
         insert.execute(kolomWaarden);
         return  template.query(
-                "select * from reservaties where reservatie =?"
-                ,reservatieMapper, reservatie.getReservatie());
+                "select * from reservaties where filmid =? and klantid = ?"
+                , reservatieMapper, reservatie.getFilmid(), reservatie.getKlantid())
+                .get(0)
+                .getFilmid();
     }
 }
