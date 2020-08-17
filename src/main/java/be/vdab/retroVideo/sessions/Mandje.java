@@ -1,9 +1,11 @@
 package be.vdab.retroVideo.sessions;
 
+import be.vdab.retroVideo.domain.Film;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,5 +22,15 @@ public class Mandje implements Serializable {
     }
     public void verwijder(long id) {
         ids.remove(id);
+    }
+    public BigDecimal totaalPrijs(List<Film> films){
+        var totalPrijs = BigDecimal.ZERO;
+        if(!films.isEmpty())
+        {
+            var prijsList = new LinkedList<BigDecimal>();
+            films.forEach(film -> prijsList.add(film.getPrijs()));
+             totalPrijs = prijsList.stream().reduce(BigDecimal::add).get();
+        }
+        return totalPrijs;
     }
 }

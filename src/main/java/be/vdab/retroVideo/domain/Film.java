@@ -1,5 +1,7 @@
 package be.vdab.retroVideo.domain;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
@@ -14,6 +16,7 @@ public class Film {
     @PositiveOrZero
     private final long gereserveerd;
     @PositiveOrZero
+    @NumberFormat(pattern = "0.00")
     private final BigDecimal prijs;
 
     public Film(long id, long genreId, String title, long voorraad, long gereserveerd, BigDecimal prijs) {

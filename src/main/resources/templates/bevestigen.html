@@ -3,10 +3,15 @@
 <head th:replace="fragments::head(title='Klanten')">
 </head>
 <body>
+<script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
 <a th:replace="fragments::topMenu"></a>
 <h1>Bevestigen</h1>
-<form method="post" th:action="@{/bevestigen/raport}">
-    <span th:text="|${aantalfilms} film(s) voor ${klient.familienaam} ${klient.voornaam}"></span>
+<div th:if="${aantalfilms}==0">
+    <span >Je maandje is leeg</span>
+</div>
+
+<form th:if="${aantalfilms}>0" method="post" th:action="@{/bevestigen/raport/{klantid}(klantid=*{id})}">
+    <span th:text="|${aantalfilms} film(s) voor ${klant.familienaam} ${klant.voornaam}"></span>
     <label>
         <button>Bevestigen</button>
     </label>

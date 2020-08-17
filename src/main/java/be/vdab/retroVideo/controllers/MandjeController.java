@@ -29,23 +29,12 @@ public class MandjeController {
     mandje.voegToe(id);
     return "redirect:/Mandje";
     }
-    public BigDecimal totaalPrijs(List<Film> films){
-        var totalPrijs = BigDecimal.ZERO;
-        if(!films.isEmpty())
-        {
-            var prijsList = new LinkedList<BigDecimal>();
-            films.forEach(film -> prijsList.add(film.getPrijs()));
-            for(var i=0;i!=prijsList.size();i++) {
-                totalPrijs=totalPrijs.add(prijsList.get(i));
-            }
-        }
-        return totalPrijs;
-    }
+
     @GetMapping
     public ModelAndView toonMandje() {
         var films = filmService.findByIds(mandje.getIds());
         var modelAndView = new ModelAndView("mandje","films", films);
-        modelAndView.addObject("totaalPrijs",totaalPrijs(films));
+        modelAndView.addObject("totaalPrijs",mandje.totaalPrijs(films));
         return modelAndView;
     }
     @PostMapping(value="verwijderen")

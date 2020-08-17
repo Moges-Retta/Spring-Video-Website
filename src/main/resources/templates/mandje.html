@@ -3,6 +3,7 @@
 <head th:replace="fragments::head(title='Mandje')"></head>
 <script th:src="@{/js/beschikbaar.js}" defer></script>
 <body>
+<script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
 <a th:replace="fragments::topMenu"></a>
 <h1>Mandje</h1>
 <div th:if="${films.empty}">Je mandje is leeg.</div>

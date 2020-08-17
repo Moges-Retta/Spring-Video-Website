@@ -2,6 +2,7 @@
 <html lang="nl " xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head(title='Retro Video')"></head>
 <body>
+<script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
 <a th:replace="fragments::topMenu"></a>
 <form th:if="${film}" th:object="${film}"
       method="post" th:action="@{/Mandje/{filmId}(filmId=*{id})}">
@@ -10,8 +11,8 @@
         <img th:src="@{/images/{filmId}.jpg(filmId=*{id})}"
              th:alt="*{title}">
         <dl>
-            <dt>Prijs</dt> €
-            <dd th:text="*{prijs}"></dd>
+            <dt>Prijs</dt>
+            <dd th:text="|€ *{prijs}|"></dd>
             <dt>Voorraad</dt>
             <dd th:text="*{voorraad}"></dd>
             <dt>Voorraad</dt>

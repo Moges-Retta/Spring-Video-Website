@@ -1,6 +1,7 @@
 package be.vdab.retroVideo.controllers;
 
 import be.vdab.retroVideo.domain.Film;
+import be.vdab.retroVideo.domain.Klant;
 import be.vdab.retroVideo.domain.Reservatie;
 import be.vdab.retroVideo.services.FilmService;
 import be.vdab.retroVideo.services.KlantService;
@@ -13,9 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 @Controller
@@ -37,28 +36,28 @@ public class ReservatieController {
     public ModelAndView bevestigen(@PathVariable long id){
         var modelAndView = new ModelAndView("bevestigen");
         modelAndView.addObject("aantalfilms",filmService.findByIds(mandje.getIds()).size());
-        modelAndView.addObject("klient",klantService.findById(id).get());
+        modelAndView.addObject("klant",klantService.findById(id).get());
         return modelAndView;
     }
-    @PostMapping("raport")
-    public ModelAndView raport(){
+    @PostMapping("raport/{id}")
+    public ModelAndView raport(@PathVariable long id){
         var films = filmService.findByIds(mandje.getIds());
-        var klant = klantService.findById(1).get();
+        var klant = klantService.findById(id).get();
         var reservaties = new LinkedList<Reservatie>();
-        var nietGereservared = new LinkedList<Film>();
+        var nietGereserveered = new LinkedList<Film>();
 
         films.forEach(film -> {
             if(film.getVoorraad()>film.getGereserveerd()){
                 filmService.update(film);
                 reservaties.add(new Reservatie(klant.getId(),film.getId(), LocalDateTime.now()));
             }else{
-                nietGereservared.add(film);
+                nietGereserveered.add(film);
             }
         });
         reservaties.forEach(reservatieService::create);
 
         var modelAndView = new ModelAndView("raport");
-        modelAndView.addObject("nietGereserveerd",nietGereservared);
+        modelAndView.addObject("nietGereserveerd",nietGereserveered);
         return modelAndView;
     }
 }

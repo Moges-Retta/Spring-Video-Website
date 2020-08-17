@@ -19,8 +19,6 @@ public class JdbcReservatieRepository implements ReservatieRepository{
     private final JdbcTemplate template;
     private final SimpleJdbcInsert insert;
 
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("uuuu-M-dd HH:mm:ss");
-
     private final RowMapper<Reservatie> reservatieMapper =
             (result, rowNum) ->
                     new Reservatie(result.getLong("klantid"),

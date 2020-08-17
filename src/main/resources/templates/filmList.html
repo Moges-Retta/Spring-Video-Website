@@ -8,7 +8,7 @@
 <span ><h2 th:text ="${Genre}"></h2></span>
     <ul class="naastMekaar">
         <li  th:each="film:${films}" th:object="${film}">
-            <a th:href="@{/{filmId}(filmId=*{id})}">
+            <a th:href="@{/genre/{filmId}(filmId=*{id})}">
             <img th:src="@{/images/{filmId}.jpg(filmId=*{id})}"
                  th:alt="*{title}">
             </a>
