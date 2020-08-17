@@ -10,11 +10,12 @@
     <span >Je maandje is leeg</span>
 </div>
 
-<form th:if="${aantalfilms}>0" method="post" th:action="@{/bevestigen/raport/{klantid}(klantid=*{id})}">
+<form th:if="${aantalfilms}>0" method="post"
+      th:action="@{/bevestigen/raport/{klantid}(klantid=*{id})}">
     <span th:text="|${aantalfilms} film(s) voor ${klant.familienaam} ${klant.voornaam}"></span>
-    <label>
+    <div class="bevestigen">
         <button>Bevestigen</button>
-    </label>
+    </div>
 </form>
 </body>
 </html>

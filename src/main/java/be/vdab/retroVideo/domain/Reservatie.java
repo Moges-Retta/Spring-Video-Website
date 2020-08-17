@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class Reservatie {
     private final long klantid;
     private final long filmid;
-    @DateTimeFormat
     private final LocalDateTime reservatie;
 
     public Reservatie(long klantid, long filmid, LocalDateTime reservatie) {

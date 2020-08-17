@@ -3,6 +3,7 @@
 <head th:replace="fragments::head(title='Retro Video')"></head>
 <body>
 <script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
+<script th:src="@{/js/beschikbaar.js}" defer></script>
 <a th:replace="fragments::topMenu"></a>
 <form th:if="${film}" th:object="${film}"
       method="post" th:action="@{/Mandje/{filmId}(filmId=*{id})}">
@@ -25,5 +26,4 @@
 </form>
 
 </body>
-<script th:src="@{/js/beschikbaar.js}" defer></script>
 </html>
