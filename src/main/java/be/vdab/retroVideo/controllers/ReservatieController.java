@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -40,7 +42,7 @@ public class ReservatieController {
         return modelAndView;
     }
     @PostMapping("raport/{id}")
-    public ModelAndView raport(@PathVariable long id){
+    public ModelAndView raport(@PathVariable long id, HttpSession session){
         var films = filmService.findByIds(mandje.getIds());
         var klant = klantService.findById(id).get();
         var reservaties = new LinkedList<Reservatie>();
@@ -58,6 +60,7 @@ public class ReservatieController {
 
         var modelAndView = new ModelAndView("raport");
         modelAndView.addObject("nietGereserveerd",nietGereserveered);
+        session.invalidate();
         return modelAndView;
     }
 }

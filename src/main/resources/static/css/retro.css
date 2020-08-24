@@ -13,8 +13,6 @@ body {
 }
 nav,ul {
   list-style-type: none;
-    display: flex;
-    justify-content: space-between;
 }
 nav a{
    float: left;
