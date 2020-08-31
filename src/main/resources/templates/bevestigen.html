@@ -12,7 +12,7 @@
 
 <form th:if="${aantalfilms}>0" method="post"
       th:action="@{/bevestigen/raport/{klantid}(klantid=*{id})}">
-    <span th:text="|${aantalfilms} film(s) voor ${klant.familienaam} ${klant.voornaam}"></span>
+    <span th:text="|${aantalfilms} film(s) voor ${klant.familienaam} ${klant.voornaam}|"></span>
     <div class="bevestigen">
         <button>Bevestigen</button>
     </div>
